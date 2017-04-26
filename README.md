@@ -1,4 +1,4 @@
-#Intro to Responsive Design
+#Google Sheets to JSON
 =============
 ###### Updated: Thursday the 27th of April 2017.
 
@@ -7,7 +7,8 @@
 TODO
 
 ### Resources for creating Live Data Feeds
-####'Use a Google Spreadsheet as your JSON backend'
+
+#### 'Use a Google Spreadsheet as your JSON backend'
 URL: https://coderwall.com/p/duapqq/use-a-google-spreadsheet-as-your-json-backend
 Description: This website provides basic information about using Google Spreadsheet 
 as a source for storing information.
