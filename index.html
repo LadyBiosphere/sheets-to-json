@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sheets to JSON</title>
+</head>
+<body>
+
+	<p>Today, we have sold <span class="inner"></span> hot drinks! Not bad, eh?</p>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	    //console.log("stuff");
+		
+		$.getJSON("https://spreadsheets.google.com/feeds/list/1CweCoZSBd6FHeKy0BoSdl-BivjNVf6EKY-uOFHl4TGw/od6/public/values?alt=json", function(data) {
+
+		  console.log("Ahoy");
+
+		  // Open Console to see whether this data is coming through
+		  console.log(data.feed.entry[3]['gsx$price']['$t']);
+		  console.log(data.feed.entry[10]['gsx$numbersoldtoday']['$t']);
+		  console.log(data.feed.entry[3].gsx$nameofproduct.$t);
+
+		  // Put data in the webpage
+		  $( ".inner" ).append((data.feed.entry[10].gsx$numbersoldtoday.$t));
+
+
+		});
+
+
+	</script>
+</body>
+</html>
