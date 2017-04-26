@@ -1,32 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Sheets to JSON</title>
+	<title>Google Sheets to JSON</title>
+	<meta charset="utf-8">
 </head>
 <body>
+	<h1>Live data from an imaginary coffee shop</h1>
 
-	<p>Today, we have sold <span class="inner"></span> hot drinks! Not bad, eh?</p>
+	<!-- The SPAN tag below will be automatically filled by live data coming from a live Google Spreadsheet -->
+	<p>Today, we have sold <span class="total-number-of-drinks"></span> hot drinks! Not bad, eh?</p>
+	<small>Take a look at <a href="https://docs.google.com/spreadsheets/d/1CweCoZSBd6FHeKy0BoSdl-BivjNVf6EKY-uOFHl4TGw/edit?usp=sharing" target="_blank">this Google Spreadsheet</a> to see where the data is coming from!</small>
 
+
+
+
+
+	<!-- You need to have jQuery for this to work -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript">
 
-	    //console.log("stuff");
+	<!-- This can be kept in a seperate '.js' file but for simplicity, I have put everything in this document -->
+	<script type="text/javascript">
+	
+		// To use your Google spreadsheet, you need to first 'Publish to web' in order to get it's 'KEY'.
+
+		// Once you have your KEY, you can paste it into the following URL:
+		// https://spreadsheets.google.com/feeds/list/PUT-KEY-HERE/od6/public/values?alt=json
 		
+		// If you open this URL (with your key) in your browser, you should see your data in a 'minified' JSON format.
+		// Use an online JSON formatter to help you format/read the content easier!
+
+		// To grab data from your spreadsheet, you need to 'get' the JSON data with jQuery
 		$.getJSON("https://spreadsheets.google.com/feeds/list/1CweCoZSBd6FHeKy0BoSdl-BivjNVf6EKY-uOFHl4TGw/od6/public/values?alt=json", function(data) {
 
-		  console.log("Ahoy");
 
-		  // Open Console to see whether this data is coming through
-		  console.log(data.feed.entry[3]['gsx$price']['$t']);
-		  console.log(data.feed.entry[10]['gsx$numbersoldtoday']['$t']);
-		  console.log(data.feed.entry[3].gsx$nameofproduct.$t);
+			// It's a good idea to test whether you can grab any data at all from your spreadsheet.
+			// Open the Console and try to grab data from a particular cell in your spreadsheet.
+			
+			// To select a particular cell from your spreadsheet, you need to provide the co-ordinates to that cell.
+			// The number inside the [] is the row in your spreadsheet.
+			// The string that begins with 'gsx$...', is the name of your column in your spreadsheet.
+		  	console.log(data.feed.entry[3]['gsx$price']['$t']);
+		  	console.log(data.feed.entry[10]['gsx$numbersoldtoday']['$t']);
+		  	console.log(data.feed.entry[3].gsx$nameofproduct.$t);
 
-		  // Put data in the webpage
-		  $( ".inner" ).append((data.feed.entry[10].gsx$numbersoldtoday.$t));
 
+		  	// Using jQuery, you can insert data ('append') from your spreadsheet into the SPAN tag.
+		  	// Note: You will need to provide the co-ordinates to a specific cell in the spreadsheet. 
+			$( ".total-number-of-drinks" ).append((data.feed.entry[10].gsx$numbersoldtoday.$t));
 
-		});
-
+		})
 
 	</script>
 </body>
