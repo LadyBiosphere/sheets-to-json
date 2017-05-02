@@ -1,17 +1,15 @@
 #Google Sheets to JSON
-=============
-###### Updated: Thursday the 27th of April 2017.
+======================
+###### Updated: Wednesday the 3rd of May 2017.
 
 
 ### Overview
-TODO
+This project was created to demonstrate an example of a 'live data feed'. The data feed relies on a spreadsheet (Google Sheets) and jQuery to work. It is easy to implement and can be applied to situations where a client needs to update content on their website quickly but isn't code-savvy.
 
 ### Resources for creating Live Data Feeds
 
 [Use a Google Spreadsheet as your JSON backend](https://coderwall.com/p/duapqq/use-a-google-spreadsheet-as-your-json-backend)
-This website provides basic information about using Google Spreadsheet 
-as a source for storing information.
+ provides basic information about using Google Spreadsheet as a source for storing information.
 
 [JSON validator & formatter](https://jsonformatter.curiousconcept.com/)
-This website formats your JSON data into a human-readable format. It 
-allows you to see all the arrays, their structures and their respective names.
+ formats your JSON data into a human-readable format. It allows you to see all the arrays, their structures and their respective names.
